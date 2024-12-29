@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Trendy-Categories</title>
+    <link rel="stylesheet" href="home.css">
+</head>
+<body>
+    <div class="header">
+        <div class="rightc" id="trend">TrendY</div>
+        <div class="rightc"><a href="index.html">Home</a></div>
+        <div class="rightc"><a href="aboutus.html">About Us</a></div>
+        <div class="rightc"><a href="category.html">Categories</a></div>
+        <div class="rightc"><a href="cart.html">Cart</a></div>
+        <div class="rightc">
+            <input type="text" placeholder="Enter Product">
+            <button class="si">Search</button>
+        </div>
+        <div class="rightc"><button class="sii"><a href="signup.html">SignUp</a></button></div>
+        <div class="rightc"><button class="si"><a href="login.html">Login</a></button></div>
+    </div>
+
+    <div class="main">
+        <!-- Categories Section -->
+        <div class="categories"><a href="index.html">
+            <h2>Browse by Categories</h2>
+            <div class="category-box">
+                <div class="category-item">
+                    <div class="category-image" style="background-image: url('electronics.jpg'); background-size: cover;"></div>
+                    <div class="category-name">Electronics</div>
+                </div>
+                <div class="category-item">
+                    <div class="category-image" style="background-image: url('fashion.jpg'); background-size: cover;"></div>
+                    <div class="category-name">Fashion</div>
+                </div>
+                <div class="category-item">
+                    <div class="category-image" style="background-image: url('home_decor.jpg'); background-size: cover;"></div>
+                    <div class="category-name">Home Decor</div>
+                </div>
+                <div class="category-item">
+                    <div class="category-image" style="background-image: url('sports.jpg'); background-size: cover;"></div>
+                    <div class="category-name">Sports</div>
+                </div>
+                <div class="category-item">
+                    <div class="category-image" style="background-image: url('toys.jpg'); background-size: cover;"></div>
+                    <div class="category-name">Toys</div>
+                </div>
+                <div class="category-item">
+                    <div class="category-image" style="background-image: url('books.jpg'); background-size: cover;"></div>
+                    <div class="category-name">Books</div>
+                </div>
+            </div>
+        </div></a>
+
+        <!-- Your existing product boxes -->
+        <div class="box">
+            <div class="photo" style="background-image: url('img1.jpg'); background-size: cover;"></div>
+            <div class="text">Wall Decorative Painting</div>
+            <p class="price">$150</p>
+            <button class="add-to-cart" onclick="addToCart('Wall Decorative Painting', 150, 'img1.jpg')">Add to Cart</button>
+        </div>
+
+    <div class="box">
+        <div class="photo" style="background-image: url('img2.jpg'); background-size: cover;"></div>
+            <div class="text">Wool Clothes</div>
+            <p class="price">$80</p>
+            <button class="add-to-cart" onclick="addToCart('Wool Clothes', 80, 'img2.jpg')">Add to Cart</button>
+    </div>
+
+    <div class="box">
+        <div class="photo" style="background-image: url('img3.webp'); background-size: cover;"></div>
+            <div class="text">Broklyn Cloth-Latest Streetwear</div>
+            <p class="price">$120</p>
+            <button class="add-to-cart" onclick="addToCart('Broklyn Cloth-Latest Streetwear', 120, 'img3.webp')">Add to Cart</button>
+    </div>
+
+    <div class="box">
+        <div class="photo" style="background-image: url('img4.avif'); background-size: cover;"></div>
+            <div class="text">BOAT-wireless Headphones</div>
+            <p class="price">$200</p>
+            <button class="add-to-cart" onclick="addToCart('BOAT-wireless Headphones', 200, 'img4.avif')">Add to Cart</button>
+    </div>
+
+    <div class="box">
+        <div class="photo" style="background-image: url('img5.jpg'); background-size: contain;"></div>
+            <div class="text">Copilot with WINDOWS 12</div>
+            <p class="price">$800</p>
+            <button class="add-to-cart" onclick="addToCart('Copilot with WINDOWS 12', 800, 'img5.jpg')">Add to Cart</button>
+    </div>
+
+    <div class="box">
+        <div class="photo" style="background-image: url('img6.jpg'); background-size: cover;"></div>
+            <div class="text">Winter Jacket</div>
+            <p class="price">$100</p>
+            <button class="add-to-cart" onclick="addToCart('Winter Jacket', 100, 'img6.jpg')">Add to Cart</button>
+    </div>
+
+    <div class="box">
+        <div class="photo" style="background-image: url('img7.jpg'); background-size: contain;"></div>
+            <div class="text">Classic Fashion Goggles</div>
+            <p class="price">$50</p>
+            <button class="add-to-cart" onclick="addToCart('Classic Fashion Goggles', 50, 'img7.jpg')">Add to Cart</button>
+    </div>
+    
+    <div class="box">
+        <div class="photo" style="background-image: url('img8.jpg'); background-size: contain;"></div>
+            <div class="text">DSLR Camera</div>
+            <p class="price">$600</p>
+            <button class="add-to-cart" onclick="addToCart('DSLR Camera', 600, 'img8.jpg')">Add to Cart</button>
+    </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Your Company Name. All rights reserved.</p>
+    </footer>
+     <script>
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+function addToCart(name, price, image) {
+    // Check if the item already exists in the cart
+    let existingItem = cart.find(item => item.name === name);
+    
+    if (existingItem) {
+        // If item exists, increase the quantity
+        existingItem.quantity++;
+    } else {
+        // If item does not exist, add it to the cart with quantity 1
+        cart.push({ name, price, image, quantity: 1 });
+    }
+
+    // Save the updated cart in localStorage
+    localStorage.setItem('cart', JSON.stringify(cart));
+
+    alert(`${name} has been added to your cart!`);
+}
+
+    </script>
+</body>
+</html>
